@@ -187,8 +187,8 @@ CREATE TABLE [dbo].[UniversityApplications]
 	CONSTRAINT [FK_UniversityApplication_StatusID] 
 		FOREIGN KEY([StatusID]) 
 		REFERENCES [dbo].[Statuses]([StatusID]),
-	CONSTRAINT [CHK_DateBeforeOrToday] CHECK([Date] <= CAST(GETDATE() as date)),
-	CONSTRAINT [CHK_DateAfter2019] CHECK([Date] >= CAST('01/06/2019' as date)),
+	CONSTRAINT [CHK_DateBeforeOrToday_UniApp] CHECK([Date] <= CAST(GETDATE() as date)),
+	CONSTRAINT [CHK_DateAfter2019_UniApp] CHECK([Date] >= CAST('01/06/2019' as date)),
 	CONSTRAINT [FK_UniversityApplication_ReviewerID] 
 		FOREIGN KEY([ReviewerID_UserID]) 
 		REFERENCES [dbo].[Users]([UserID])
@@ -301,8 +301,8 @@ CREATE TABLE [dbo].[StudentApplications]
 	CONSTRAINT FK_StudentApplications_UniversityStaffID
 		FOREIGN KEY ([UniversityStaffID]) 
 		REFERENCES [dbo].[UniversityStaff]([UniversityStaffID]),
-	CONSTRAINT [CHK_DateBeforeOrToday] CHECK([Date] <= CAST(GETDATE() as date)),
-	CONSTRAINT [CHK_DateAfter2019] CHECK([Date] >= CAST('01/01/2020' as date))
+	CONSTRAINT [CHK_DateBeforeOrToday_StudentApp] CHECK([Date] <= CAST(GETDATE() as date)),
+	CONSTRAINT [CHK_DateAfter2019_StudentApp] CHECK([Date] >= CAST('01/01/2020' as date))
 );
 GO
 
